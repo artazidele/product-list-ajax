@@ -130,6 +130,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 furnitureField.style.display = 'block';
             }
         }
+        $(document).on('submit','#productForm',function(e){
+            e.preventDefault();
+            $.ajax({
+                method:"POST",
+                url: "AddProduct.php",
+                data: $(this).serialize,
+                success: function(data){
+                    $('#msg').html(data);
+                }
+            });
+        });
     </script>
   </body>
 </html>
